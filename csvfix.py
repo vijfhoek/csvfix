@@ -3,7 +3,6 @@ import fileinput
 import argparse
 import re
 import sys
-from decimal import Decimal
 
 
 def main():
@@ -53,7 +52,7 @@ def main():
             columns = []
             for i, column in enumerate(row):
                 if i not in not_decimal_columns:
-                    value = Decimal(
+                    value = (
                         column.replace(args.thousands, "").replace(args.decimal, ".")
                     )
                 else:
