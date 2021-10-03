@@ -13,9 +13,12 @@ positional arguments:
   file                  the input file
 
 optional arguments:
-  -h, --help             show this help message and exit
-  --headings             whether the file has headings
-  --delimiter DELIMITER  the delimiter character
-  --decimal DECIMAL      the decimal delimiter
-  --thousands THOUSANDS  the thousands separator
+  -h, --help            show this help message and exit
+  --headings            whether the input file has headings
+  --delimiter DELIMITER
+                        the input file's delimiter character
+  --decimal DECIMAL     the input file's decimal delimiter
+  --thousands THOUSANDS
+                        the input file's thousands separator
+
 ```

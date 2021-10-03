@@ -12,11 +12,17 @@ def main():
         "--headings",
         action="store_true",
         default=False,
-        help="whether the file has headings",
+        help="whether the input file has headings",
     )
-    parser.add_argument("--delimiter", default=",", help="the delimiter character")
-    parser.add_argument("--decimal", default=".", help="the decimal delimiter")
-    parser.add_argument("--thousands", default=None, help="the thousands separator")
+    parser.add_argument(
+        "--delimiter", default=",", help="the input file's delimiter character"
+    )
+    parser.add_argument(
+        "--decimal", default=".", help="the input file's decimal delimiter"
+    )
+    parser.add_argument(
+        "--thousands", default=None, help="the input file's thousands separator"
+    )
     args = parser.parse_args()
 
     if args.thousands is None:
