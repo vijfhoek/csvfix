@@ -1,11 +1,10 @@
 import csv
-import fileinput
 import argparse
 import re
 import sys
 
 
-def main():
+def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("file", help="the input file")
     parser.add_argument(
@@ -31,7 +30,11 @@ def main():
         elif args.decimal == ".":
             args.thousands = ","
 
-    # First pass: Detect decimal columns
+    return args
+
+
+def first_pass(args: argparse.Namespace) -> set[int]:
+    """First pass: Detect decimal columns"""
     decimal_re = re.compile(
         "^[+-]?([0-9{1}]+([{0}][0-9{1}]*)?|[{0}][0-9{1}]+)$".format(
             re.escape(args.decimal), re.escape(args.thousands)
@@ -48,7 +51,11 @@ def main():
                 if not decimal_re.match(column):
                     not_decimal_columns.add(i)
 
-    # Second pass: Convert decimal columns
+    return not_decimal_columns
+
+
+def second_pass(args: argparse.Namespace, not_decimal_columns: set[int]) -> None:
+    """Second pass: Convert decimal columns"""
     with open(args.file) as csvfile:
         reader = csv.reader(csvfile, delimiter=args.delimiter)
         writer = csv.writer(sys.stdout, quoting=csv.QUOTE_NONNUMERIC)
@@ -65,6 +72,12 @@ def main():
                     value = column
                 columns.append(value)
             writer.writerow(columns)
+
+
+def main() -> None:
+    args = parse_args()
+    not_decimal_columns = first_pass(args)
+    second_pass(args, not_decimal_columns)
 
 
 if __name__ == "__main__":
