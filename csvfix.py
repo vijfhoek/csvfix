@@ -8,19 +8,20 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("file", help="the input file")
     parser.add_argument(
+        "-H",
         "--headings",
         action="store_true",
         default=False,
         help="whether the input file has headings",
     )
     parser.add_argument(
-        "--delimiter", default=",", help="the input file's delimiter character"
+        "-d", "--delimiter", default=",", help="the input file's delimiter character"
     )
     parser.add_argument(
-        "--decimal", default=".", help="the input file's decimal delimiter"
+        "-D", "--decimal", default=".", help="the input file's decimal delimiter"
     )
     parser.add_argument(
-        "--thousands", default=None, help="the input file's thousands separator"
+        "-t", "--thousands", default=None, help="the input file's thousands separator"
     )
     args = parser.parse_args()
 

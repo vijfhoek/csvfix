@@ -7,18 +7,18 @@ decimal point to a `.`.
 Might add more settings later.
 
 ```
-usage: csvfix.py [-h] [--headings] [--delimiter DELIMITER] [--decimal DECIMAL] [--thousands THOUSANDS] file
+usage: csvfix.py [-h] [-H] [-d DELIMITER] [-D DECIMAL] [-t THOUSANDS] file
 
 positional arguments:
   file                  the input file
 
 optional arguments:
   -h, --help            show this help message and exit
-  --headings            whether the input file has headings
-  --delimiter DELIMITER
+  -H, --headings        whether the input file has headings
+  -d DELIMITER, --delimiter DELIMITER
                         the input file's delimiter character
-  --decimal DECIMAL     the input file's decimal delimiter
-  --thousands THOUSANDS
+  -D DECIMAL, --decimal DECIMAL
+                        the input file's decimal delimiter
+  -t THOUSANDS, --thousands THOUSANDS
                         the input file's thousands separator
-
 ```
