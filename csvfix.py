@@ -1,3 +1,4 @@
+#!/bin/env python3
 import csv
 import argparse
 import re
